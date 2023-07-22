@@ -1,11 +1,13 @@
-
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
-    return (
-        <div>
-            this home
-        </div>
-    );
+  return (
+    <>
+      <Helmet>
+        <title>College Hive | Home</title>
+      </Helmet>
+    </>
+  );
 };
 
 export default Home;
