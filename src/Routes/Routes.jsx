@@ -3,6 +3,7 @@ import Main from "../Layout/Main";
 import Home from "../components/Home/Home";
 import College from "../components/College/College";
 import CollegeDetails from "../components/CollegeDetails/CollegeDetails";
+import Admission from "../components/Admission/Admission";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
         path: 'CollegeDetails/:id',
         element: <CollegeDetails></CollegeDetails>,
         
+      },
+      {
+        path: 'admission',
+        element: <Admission></Admission>
       }
     ],
   },

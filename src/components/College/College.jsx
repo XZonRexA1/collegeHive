@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const College = () => {
@@ -13,11 +14,14 @@ const College = () => {
 
   return (
     <>
+    <Helmet>
+        <title>College Hive | Colleges</title>
+      </Helmet>
       <div className="grid md:grid-cols-3 pt-14 bg-gradient-to-b from-white to-stone-600 font-golos">
         {collegeData.map((clg) => (
           <div
             key={clg._id}
-            className="card w-96 md:m-12 ml-2 mb-8 md:ml-4 bg-blue-400 font-rubik text-white shadow-xl"
+            className="card w-96 md:m-12 ml-2 mb-8 md:ml-4 bg-stone-900 font-rubik text-white shadow-xl"
           >
             <figure className="px-10 pt-10">
               <img
@@ -42,7 +46,7 @@ const College = () => {
               </ul>
               <p>Research Count: {clg.research_count}</p>
               <div className="card-actions">
-                <Link to={`/CollegeDetails/${clg._id}`}><button className="btn border-none text-white font-golos bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500">
+                <Link to={`/CollegeDetails/${clg._id}`}><button className="btn border-none text-white font-golos bg-gradient-to-r from-stone-400 to-gray-500 hover:from-orange-500 hover:to-yellow-500">
                   Details
                 </button></Link>
               </div>

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const CollegeDetails = () => {
   const [collegeDataDetails, setCollegeDataDetails] = useState(null);
@@ -17,6 +18,10 @@ const CollegeDetails = () => {
   }
 
   return (
+    <>
+    <Helmet>
+        <title>College Hive | College Details</title>
+      </Helmet>
     <div className="pt-14 w-full font-golos">
       <div className="card w-full md:m-8 mt-8 mb-8 md:ml-0 grid md:grid-cols-2 bg-stone-900 font-rubik text-white shadow-xl divide-x divide-white">
         <figure className="px-10 pt-10">
@@ -96,6 +101,7 @@ const CollegeDetails = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
