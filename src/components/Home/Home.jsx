@@ -16,7 +16,7 @@ const Home = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/college`).then((res) => {
+    axios.get(`https://college-hive-server.vercel.app/college`).then((res) => {
       setCollegeData(res.data);
     });
   }, []);
@@ -158,8 +158,10 @@ const Home = () => {
 
       <div className="text-center mt-44 font-bold font-golos text-2xl md:text-4xl">
         View Different{" "}
-        <span className="bg-black text-white p-2 rounded">Reviews and Feedback</span>
-      </div>          
+        <span className="bg-black text-white p-2 rounded">
+          Reviews and Feedback
+        </span>
+      </div>
       <ReviewSection></ReviewSection>
 
       <ContactUs></ContactUs>

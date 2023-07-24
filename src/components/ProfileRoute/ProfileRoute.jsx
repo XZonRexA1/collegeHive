@@ -11,7 +11,7 @@ const ProfileRoute = () => {
   const [updatedData, setUpdatedData] = useState({}); // To store the updated data
 
   useEffect(() => {
-    axios.get("http://localhost:5000/userInfo").then((res) => {
+    axios.get("https://college-hive-server.vercel.app/userInfo").then((res) => {
       setUserData(res.data);
     });
   }, []);
@@ -24,7 +24,9 @@ const ProfileRoute = () => {
       <>
         <div className="font-golos text-4xl ml-12 font-bold pt-44 mx-auto">
           No user data found for the current user {}
-        <Link to="/signup" className="text-blue-500 underline">Go back</Link>
+          <Link to="/signup" className="text-blue-500 underline">
+            Go back
+          </Link>
         </div>
       </>
     );
@@ -39,7 +41,7 @@ const ProfileRoute = () => {
   // Function to handle the save button click
   const handleSaveClick = () => {
     axios
-      .put("http://localhost:5000/userInfo", updatedData)
+      .put("https://college-hive-server.vercel.app/userInfo", updatedData)
       .then(() => {
         // If the update was successful, show a success toast
         toast.success("User data updated successfully!");

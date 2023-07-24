@@ -9,9 +9,11 @@ const MyCollege = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/addCollege").then((res) => {
-      setSelectedCollegeData(res.data);
-    });
+    axios
+      .get("https://college-hive-server.vercel.app/addCollege")
+      .then((res) => {
+        setSelectedCollegeData(res.data);
+      });
   }, []);
 
   const [reviews, setReviews] = useState({});
@@ -46,7 +48,10 @@ const MyCollege = () => {
     // Add the college data to the reviewData object
     reviewData.college = collegeData;
     axios
-      .post(`http://localhost:5000/addReview/${collegeId}`, reviewData)
+      .post(
+        `https://college-hive-server.vercel.app/addReview/${collegeId}`,
+        reviewData
+      )
       .then((res) => {
         console.log("Review submitted:", res.data);
         toast.success("Review submitted successfully");

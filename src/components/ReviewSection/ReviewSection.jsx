@@ -6,9 +6,11 @@ const ReviewSection = () => {
 
   useEffect(() => {
     // Fetch the reviews data from /addReview API
-    axios.get("http://localhost:5000/addReview").then((res) => {
-      setReviews(res.data);
-    });
+    axios
+      .get("https://college-hive-server.vercel.app/addReview")
+      .then((res) => {
+        setReviews(res.data);
+      });
   }, []);
 
   return (
@@ -34,7 +36,7 @@ const ReviewSection = () => {
                   {review.college.selectedCollege.college_name}
                 </p>
 
-                    <br />
+                <br />
                 <div className="w-24 avatar ">
                   <img
                     src={review.college.image}

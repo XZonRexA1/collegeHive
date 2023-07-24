@@ -8,7 +8,7 @@ const College = () => {
   const [collegeData, setCollegeData] = useState([]);
   const { user } = useContext(AuthContext);
   useEffect(() => {
-    axios.get(`http://localhost:5000/college`).then((res) => {
+    axios.get(`https://college-hive-server.vercel.app/college`).then((res) => {
       // console.log(res.data);
       setCollegeData(res.data);
     });

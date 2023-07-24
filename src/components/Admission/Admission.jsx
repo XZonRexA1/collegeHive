@@ -5,20 +5,19 @@ import { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
 const Admission = () => {
-    const [collegeData, setCollegeData] = useState([]);
-    const [selectedCollege, setSelectedCollege] = useState(null);
-    const [loading, setLoading] = useState(true);
+  const [collegeData, setCollegeData] = useState([]);
+  const [selectedCollege, setSelectedCollege] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/college").then((res) => {
-    //   console.log(res.data);
+    axios.get("https://college-hive-server.vercel.app/college").then((res) => {
+      //   console.log(res.data);
       setCollegeData(res.data);
       setLoading(false);
     });
   }, []);
 
   const handleCollegeSelect = (college) => {
-    
     setSelectedCollege(college);
   };
 
@@ -26,7 +25,7 @@ const Admission = () => {
     console.log("Form data:", data);
     data.selectedCollege = selectedCollege;
     axios
-      .post("http://localhost:5000/addCollege", data)
+      .post("https://college-hive-server.vercel.app/addCollege", data)
       .then((response) => {
         reset();
         console.log("Data sent successfully:", response.data);
@@ -59,7 +58,9 @@ const Admission = () => {
         <table className="table w-full  border-collapse">
           <thead>
             <tr>
-              <th className="px-4 py-2 text-2xl font-bold text-black">College Name</th>
+              <th className="px-4 py-2 text-2xl font-bold text-black">
+                College Name
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -75,7 +76,7 @@ const Admission = () => {
             ))}
           </tbody>
         </table>
-        
+
         {selectedCollege && (
           <div className="mt-6">
             <h2 className="text-2xl font-bold">
@@ -200,7 +201,10 @@ const Admission = () => {
               </div>
 
               <div className="form-control m-4 w-50">
-                <button className="btn btn-active btn-accent mb-12" type="submit">
+                <button
+                  className="btn btn-active btn-accent mb-12"
+                  type="submit"
+                >
                   Submit
                 </button>
                 <Toaster position="top-right" reverseOrder={false} />

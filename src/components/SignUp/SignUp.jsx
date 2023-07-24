@@ -28,8 +28,7 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     try {
       // Create user using the AuthContext's createUser function
-      await createUser(data.email, data.password)
-      .then((result) => {
+      await createUser(data.email, data.password).then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
       });
@@ -44,7 +43,7 @@ const SignUp = () => {
       };
 
       const response = await axios.post(
-        "http://localhost:5000/userInfo",
+        "https://college-hive-server.vercel.app/userInfo",
         userInfo
       );
       console.log("User information submitted:", response.data);
@@ -141,7 +140,9 @@ const SignUp = () => {
                     placeholder="Enter your College"
                   />
                   {errors.college && (
-                    <span className="text-red-600 mt-2">College is required</span>
+                    <span className="text-red-600 mt-2">
+                      College is required
+                    </span>
                   )}
                 </div>
 
@@ -161,7 +162,9 @@ const SignUp = () => {
                     placeholder="Enter your Address"
                   />
                   {errors.address && (
-                    <span className="text-red-600 mt-2">Address is required</span>
+                    <span className="text-red-600 mt-2">
+                      Address is required
+                    </span>
                   )}
                 </div>
                 <div>
