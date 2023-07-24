@@ -5,6 +5,10 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Gallery from "../Gallery/Gallery";
+import AboutUs from "../AboutUs/AboutUs";
+import ContactUs from "../ContactUs/ContactUs";
+import OurLocation from "../ourLocation/ourLocation";
+import ReviewSection from "../ReviewSection/ReviewSection";
 
 const Home = () => {
   const [collegeData, setCollegeData] = useState([]);
@@ -37,10 +41,15 @@ const Home = () => {
         </h2>
       </div>
 
-        <div className="text-center mt-44 font-bold font-golos text-4xl">View Different <span className="bg-black text-white p-2 rounded">Colleges</span></div>
+      <AboutUs></AboutUs>
+
+      <div className="text-center mt-44 font-bold font-golos text-3xl md:text-4xl">
+        View Different{" "}
+        <span className="bg-black text-white p-2 rounded">Colleges</span>
+      </div>
       <div>
         {/* Search bar */}
-       
+
         <div>
           <input
             className="mt-48 -mb-44 ml-8 text-xl  font-golos px-4 py-2 rounded border-none  text-white"
@@ -94,6 +103,67 @@ const Home = () => {
         </div>
       </div>
       <Gallery></Gallery>
+      {/* Section for college research paper links */}
+      <div className="mt-10 mb-14 font-golos px-4">
+        <div className="text-center mt-44 mb-24  font-bold font-golos  text-2xl md:text-4xl">
+          College Research{" "}
+          <span className="bg-black text-white p-2  rounded">Papers</span>
+        </div>
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <li>
+            <a
+              href="http://www.collegehive.com/research-paper-1"
+              className="block bg-white text-blue-500 hover:text-blue-700 rounded-lg p-4 shadow-md"
+            >
+              Research Paper 1: The Impact of Online Learning on Student
+              Performance
+            </a>
+          </li>
+          <li>
+            <a
+              href="http://www.collegehive.com/research-paper-2"
+              className="block bg-white text-blue-500 hover:text-blue-700 rounded-lg p-4 shadow-md"
+            >
+              Research Paper 2: Exploring the Effects of Social Media on College
+              Students Mental Health
+            </a>
+          </li>
+          <li>
+            <a
+              href="http://www.collegehive.com/research-paper-3"
+              className="block bg-white text-blue-500 hover:text-blue-700 rounded-lg p-4 shadow-md"
+            >
+              Research Paper 3: A Study on Gender Representation in STEM Fields
+            </a>
+          </li>
+          <li>
+            <a
+              href="http://www.collegehive.com/research-paper-4"
+              className="block bg-white text-blue-500 hover:text-blue-700 rounded-lg p-4 shadow-md"
+            >
+              Research Paper 4: The Role of Artificial Intelligence in Education
+            </a>
+          </li>
+          <li>
+            <a
+              href="http://www.collegehive.com/research-paper-5"
+              className="block bg-white text-blue-500 hover:text-blue-700 rounded-lg p-4 shadow-md"
+            >
+              Research Paper 5: Examining the Influence of Extracurricular
+              Activities on Academic Performance
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div className="text-center mt-44 font-bold font-golos text-2xl md:text-4xl">
+        View Different{" "}
+        <span className="bg-black text-white p-2 rounded">Reviews and Feedback</span>
+      </div>          
+      <ReviewSection></ReviewSection>
+
+      <ContactUs></ContactUs>
+      <OurLocation></OurLocation>
     </>
   );
 };

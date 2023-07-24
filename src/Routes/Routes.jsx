@@ -9,6 +9,7 @@ import Login from "../components/Login/Login";
 import SignUp from "../components/SignUp/SignUp";
 import ProfileRoute from "../components/ProfileRoute/ProfileRoute";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -53,4 +54,8 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: '*',
+    element: <ErrorPage></ErrorPage>
+  }
 ]);
