@@ -1,20 +1,22 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const College = () => {
   const [collegeData, setCollegeData] = useState([]);
+  const { user } = useContext(AuthContext);
   useEffect(() => {
     axios.get(`http://localhost:5000/college`).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setCollegeData(res.data);
     });
   }, []);
 
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>College Hive | Colleges</title>
       </Helmet>
       <div className="grid md:grid-cols-3 pt-14 bg-gradient-to-b from-white to-stone-600 font-golos">
@@ -46,9 +48,13 @@ const College = () => {
               </ul>
               <p>Research Count: {clg.research_count}</p>
               <div className="card-actions">
-                <Link to={`/CollegeDetails/${clg._id}`}><button className="btn border-none text-white font-golos bg-gradient-to-r from-stone-400 to-gray-500 hover:from-orange-500 hover:to-yellow-500">
-                  Details
-                </button></Link>
+                {user && (
+                  <Link to={`/CollegeDetails/${clg._id}`}>
+                    <button className="btn border-none text-white font-golos bg-gradient-to-r from-stone-400 to-gray-500 hover:from-orange-500 hover:to-yellow-500">
+                      Details
+                    </button>
+                  </Link>
+                )}
               </div>
             </div>
           </div>

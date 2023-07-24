@@ -5,13 +5,15 @@ import { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
 const Admission = () => {
-  const [collegeData, setCollegeData] = useState([]);
-  const [selectedCollege, setSelectedCollege] = useState(null);
+    const [collegeData, setCollegeData] = useState([]);
+    const [selectedCollege, setSelectedCollege] = useState(null);
+    const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios.get("http://localhost:5000/college").then((res) => {
-      console.log(res.data);
+    //   console.log(res.data);
       setCollegeData(res.data);
+      setLoading(false);
     });
   }, []);
 
@@ -22,6 +24,7 @@ const Admission = () => {
 
   const onSubmitCandidateForm = (data) => {
     console.log("Form data:", data);
+    data.selectedCollege = selectedCollege;
     axios
       .post("http://localhost:5000/addCollege", data)
       .then((response) => {
@@ -40,6 +43,10 @@ const Admission = () => {
     reset,
     formState: { errors },
   } = useForm();
+
+  if (loading) {
+    return <progress className="progress w-56" />;
+  }
   return (
     <>
       <Helmet>
@@ -49,7 +56,7 @@ const Admission = () => {
         <h2 className="text-3xl m-4 font-extrabold text-gray-900 text-center mb-8">
           College Admission
         </h2>
-        <table className="table w-full border-collapse">
+        <table className="table w-full  border-collapse">
           <thead>
             <tr>
               <th className="px-4 py-2 text-2xl font-bold text-black">College Name</th>
@@ -61,17 +68,18 @@ const Admission = () => {
                 key={college._id}
                 onClick={() => handleCollegeSelect(college)}
               >
-                <td className="border px-4 py-2 cursor-pointer">
+                <td className="border-2 px-4 py-2 cursor-pointer">
                   {college.college_name}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        
         {selectedCollege && (
           <div className="mt-6">
             <h2 className="text-2xl font-bold">
-              {selectedCollege.name} Admission
+              {selectedCollege.college_name} Admission
             </h2>
             <form
               onSubmit={handleSubmit(onSubmitCandidateForm)}
@@ -192,7 +200,7 @@ const Admission = () => {
               </div>
 
               <div className="form-control m-4 w-50">
-                <button className="btn btn-active btn-accent mb-4" type="submit">
+                <button className="btn btn-active btn-accent mb-12" type="submit">
                   Submit
                 </button>
                 <Toaster position="top-right" reverseOrder={false} />
